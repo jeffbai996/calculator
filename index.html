@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
-    <script src=./scripts/script.js" defer></script>
+    <script src="./scripts/script.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
@@ -17,10 +17,13 @@
         <input type="number" id="num2" value="0">
     </div>
     <div class="buttons">
-        <button id="plus">+</button>
-        <button id="minus">-</button>
-        <button id="divide">/</button>
-        <button id="multiply">*</button>
+        <button id="add" onclick="add()">+</button>
+        <button id="subtract" onclick="subtract()"">-</button>
+        <button id="divide" onclick="divide()">/</button>
+        <button id="multiply" onclick="multiply()">*</button>
+    </div>
+    <div class="outputs">
+        <h1 id="answer"></h1>
     </div>
 </body>
 </html>
