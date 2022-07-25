@@ -1,0 +1,19 @@
+* { 
+    border: 1px solid red;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
