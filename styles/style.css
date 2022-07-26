@@ -1,5 +1,26 @@
+:root {
+    --page-bg-color: #e8e8e8;
+    --border: 3px solid gray;
+    --border-radius: 20px;
+}
+
 * { 
     /* border: 1px solid red; */
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--page-bg-color);
+}
+
+button {
+    border: var(--border);
+    border-radius: var(--border-radius);
+    background-color: white;
+}
+
+button:hover {
+    background-color: lightgray;
 }
 
 .header {
@@ -7,7 +28,67 @@
     justify-content: center;
 }
 
-.inputs {
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    height: auto;
+    width: 400px;
+}
+
+.display-row {
+    display: flex;
+    padding: 10px 0 10px 0;
+    gap: 10px;
+    width: 100%;
+    height: 70px;
+}
+
+.display-row div {
+    display: flex;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    justify-content: right;
+    padding: 5px 10px;
+    font-size: 36pt;
+    flex: 4;
+}
+
+.display-row button {
+    flex: 1.2;
+    font-size: 16pt;
+    background-color: orange;
+    color: white;
+}
+
+.display-row button:hover {
+    background-color:darkorange;
+}
+
+.keys {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.keys button {
+    height: 97px;
+    width: 97px;
+    font-size: 36pt;
+}
+
+
+/* testing layout */
+/* .inputs {
     display: flex;
     justify-content: center;
 }
@@ -30,4 +111,4 @@
     border-radius: 4px;
     min-height: 30px;
     min-width: 100px;
-}
+} */
