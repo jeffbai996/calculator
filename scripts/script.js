@@ -2,6 +2,7 @@
 let numbers = document.getElementsByClassName('number');
 let display = document.getElementById('display');
 
+// add listeners to number keys
 for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener("click", function() {
         let buttonValue = this.textContent;
@@ -11,7 +12,7 @@ for (let i = 0; i < numbers.length; i++) {
             if (display.innerHTML === "0") {
                 display.innerHTML = buttonValue;
             } else {
-                display.innerHTML = (display.innerHTML + buttonValue).substring(0, 9);
+                display.innerHTML = (display.innerHTML + buttonValue).substring(0, 10);
             }
         }
     });
