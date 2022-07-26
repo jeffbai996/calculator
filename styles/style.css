@@ -36,12 +36,10 @@ button:hover {
 .calculator {
     display: flex;
     flex-direction: column;
-    white-space: nowrap;
     border: var(--border);
     border-radius: var(--border-radius);
     padding: 10px;
-    min-height: auto;
-    width: 435px;
+    white-space: nowrap;
 }
 
 .display-row {
@@ -65,7 +63,7 @@ button:hover {
     font-size: 16pt;
     font-weight: bold;
     background-color: orange;
-    color: white;
+    color: black;
 }
 
 #clear:hover {
