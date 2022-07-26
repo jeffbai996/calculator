@@ -3,6 +3,7 @@ const numberButtons = document.querySelectorAll('.number');
 const operatorButtons = document.querySelectorAll('.operator');
 const equalsButton = document.querySelector('#equals');
 const clearButton = document.querySelector('#clear');
+const deleteButton = document.querySelector('#delete');
 const displayValue = document.querySelector('#display-value');
 
 // stored data
@@ -11,7 +12,7 @@ let storedNumber = '';
 let clickedOperator = '';
 let result = '';
 
-displayValue.innerText = "0"
+displayValue.innerText = 0;
 
 // Calculation functions
 function operate(a, b, operator) {
@@ -39,6 +40,16 @@ numberButtons.forEach((number) => {
     })
 }); 
 
+deleteButton.addEventListener('click', function() {
+    if (storedNumber.length > 1) {
+        storedNumber = storedNumber.slice(0, -1);
+        displayValue.innerText = storedNumber;
+    } else {
+        storedNumber = '';
+        displayValue.innerText = "0";
+    }
+});
+
 operatorButtons.forEach((operator) => {
     operator.addEventListener('click', function() {
         // handle stringing operations
@@ -52,7 +63,7 @@ operatorButtons.forEach((operator) => {
         displayValue.textContent = `${currentNumber} ${clickedOperator}`;
         // clear stored number for next calculation
         storedNumber = '';
-    });
+    })
 });
 
 equalsButton.addEventListener('click', function() {
@@ -68,8 +79,7 @@ function displayResult() {
         storedNumber = result;
         // reset the current number
         currentNumber = '';
-        
-    };
+    }
 };
 
 function clearAll() {
