@@ -51,7 +51,7 @@ button:hover {
     height: 70px;
 }
 
-.display-row div {
+.display-row #display {
     border: var(--border);
     border-radius: var(--border-radius);
     text-align: right;
@@ -60,7 +60,7 @@ button:hover {
     flex: 4;
 }
 
-.display-row button {
+#clear {
     flex: 1;
     font-size: 16pt;
     font-weight: bold;
@@ -68,7 +68,7 @@ button:hover {
     color: white;
 }
 
-.display-row button:hover {
+#clear:hover {
     background-color:darkorange;
 }
 

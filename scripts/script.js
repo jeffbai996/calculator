@@ -1,19 +1,34 @@
 // get number key elements and display element
-let numbers = document.getElementsByClassName('number');
-let display = document.getElementById('display');
+let numberButtons = document.getElementsByClassName('number');
+let operatorButtons = document.getElementsByClassName('operator');
+let equalsButton = document.getElementById('equals');
+let clearButton = document.getElementById('clear');
+let lastOperand = document.getElementById('last-operand');
+let currentOperand = document.getElementById('current-operand');
 
 // add listeners to number keys
-for (let i = 0; i < numbers.length; i++) {
-    numbers[i].addEventListener("click", function() {
+for (let i = 0; i < numberButtons.length; i++) {
+    numberButtons[i].addEventListener("click", function() {
         let buttonValue = this.textContent;
-        if (buttonValue === 'CLEAR') {
-            display.innerText = "0";
-        } else {
-            if (display.innerText === "0") {
-                display.innerText = buttonValue;
+        if (buttonValue) {
+            if (currentOperand.innerText === "0") {
+                currentOperand.innerText = buttonValue;
             } else {
-                display.innerText = (display.innerText + buttonValue).substring(0, 10);
+                currentOperand.innerText = (currentOperand.innerText + buttonValue).substring(0, 10);
             }
         }
     });
+}
+
+function clearAll() {
+    currentOperand.innerText = "0";
+};
+
+function add() {
+    let num1 = Number(currentOperand.innerText);
+    storeLastOperand(num1);
+}
+
+function storeLastOperand(n) {
+    console.log(n);
 }
