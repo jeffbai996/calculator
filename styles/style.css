@@ -92,3 +92,7 @@ button:hover {
     bottom: 10px;
     left: 0;
 }
+
+a:visited {
+    color: black;
+}
