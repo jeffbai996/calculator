@@ -7,12 +7,12 @@ for (let i = 0; i < numbers.length; i++) {
     numbers[i].addEventListener("click", function() {
         let buttonValue = this.textContent;
         if (buttonValue === 'CLEAR') {
-            display.innerHTML = "0";
+            display.innerText = "0";
         } else {
-            if (display.innerHTML === "0") {
-                display.innerHTML = buttonValue;
+            if (display.innerText === "0") {
+                display.innerText = buttonValue;
             } else {
-                display.innerHTML = (display.innerHTML + buttonValue).substring(0, 10);
+                display.innerText = (display.innerHTML + buttonValue).substring(0, 10);
             }
         }
     });

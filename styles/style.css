@@ -85,3 +85,11 @@ button:hover {
     font-size: 36pt;
     font-weight: bold;
 }
+
+.footer {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 10px;
+    left: 0;
+}
