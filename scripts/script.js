@@ -21,7 +21,11 @@ function operate(a, b, operator) {
         case "-":
             return a - b;
         case "÷":
-            return a / b;
+            if (b === 0) {
+                return "lulz";
+            } else {
+                return a / b;
+            }
         case "×":
             return a * b;
     }
@@ -30,19 +34,23 @@ function operate(a, b, operator) {
 // DOM manipulation and user input functions
 numberButtons.forEach((number) => {
     number.addEventListener('click', function() {
-        storedNumber += Number(number.innerText);
+        storedNumber += number.innerText;
         displayValue.innerText = storedNumber.substring(0, 11);
     })
 }); 
 
 operatorButtons.forEach((operator) => {
     operator.addEventListener('click', function() {
+        // handle stringing operations
         if (currentNumber && storedNumber) {
             displayResult();
         }
+        // store the number/operator inputted
         currentNumber = storedNumber;
         clickedOperator = operator.innerText;
-        displayValue.textContent = `${storedNumber}  ${clickedOperator}`;
+        // displays current number + selected operator
+        displayValue.textContent = `${currentNumber} ${clickedOperator}`;
+        // clear stored number for next calculation
         storedNumber = '';
     });
 });
@@ -52,10 +60,15 @@ equalsButton.addEventListener('click', function() {
 });
 
 function displayResult() {
+    // check if there are two values to operate on
     if (currentNumber && storedNumber) {
         result = operate(Number(currentNumber), Number(storedNumber), clickedOperator);
         displayValue.textContent = result;
+        // store the result
         storedNumber = result;
+        // reset the current number
+        currentNumber = '';
+        
     };
 };
 
