@@ -1,33 +1,66 @@
-// get number key elements and display element
-let numberButtons = document.getElementsByClassName('number');
-let operatorButtons = document.getElementsByClassName('operator');
-let equalsButton = document.getElementById('equals');
-let clearButton = document.getElementById('clear');
-let lastOperandElement = document.getElementById('last-operand');
-let currentOperandElement = document.getElementById('current-operand');
-let currentOperand; // stores value of current operand
-let lastOperand; // stores value of last operand
+// DOM elements
+const numberButtons = document.querySelectorAll('.number');
+const operatorButtons = document.querySelectorAll('.operator');
+const equalsButton = document.querySelector('#equals');
+const clearButton = document.querySelector('#clear');
+const displayValue = document.querySelector('#display-value');
 
-// add listeners to number keys
-for (let i = 0; i < numberButtons.length; i++) {
-    numberButtons[i].addEventListener("click", function() {
-        let buttonValue = this.textContent;
-        if (currentOperandElement.innerText === "0") {
-            currentOperandElement.innerText = buttonValue;
-        } else {
-            currentOperandElement.innerText = (currentOperandElement.innerText + buttonValue).substring(0, 10);
+// stored data
+let currentNumber = '';
+let storedNumber = '';
+let clickedOperator = '';
+let result = '';
+
+displayValue.innerText = "0"
+
+// Calculation functions
+function operate(a, b, operator) {
+    switch(operator) {
+        case "+":
+            return a + b;
+        case "-":
+            return a - b;
+        case "÷":
+            return a / b;
+        case "×":
+            return a * b;
+    }
+};
+
+// DOM manipulation and user input functions
+numberButtons.forEach((number) => {
+    number.addEventListener('click', function() {
+        storedNumber += Number(number.innerText);
+        displayValue.innerText = storedNumber.substring(0, 11);
+    })
+}); 
+
+operatorButtons.forEach((operator) => {
+    operator.addEventListener('click', function() {
+        if (currentNumber && storedNumber) {
+            displayResult();
         }
+        currentNumber = storedNumber;
+        clickedOperator = operator.innerText;
+        displayValue.textContent = `${storedNumber}  ${clickedOperator}`;
+        storedNumber = '';
     });
-}
+});
+
+equalsButton.addEventListener('click', function() {
+    displayResult();
+});
+
+function displayResult() {
+    if (currentNumber && storedNumber) {
+        result = operate(Number(currentNumber), Number(storedNumber), clickedOperator);
+        displayValue.textContent = result;
+        storedNumber = result;
+    };
+};
 
 function clearAll() {
-    currentOperandElement.innerText = "0";
-};
-
-function add() {
-
-};
-
-function operate() {
-
+    displayValue.innerText = "0";
+    currentNumber = '';
+    storedNumber = '';
 };
