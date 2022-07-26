@@ -63,6 +63,7 @@ button:hover {
 .display-row button {
     flex: 1;
     font-size: 16pt;
+    font-weight: bold;
     background-color: orange;
     color: white;
 }
