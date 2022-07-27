@@ -23,7 +23,7 @@ function operate(a, b, operator) {
             return a - b;
         case "÷":
             if (b === 0) {
-                return "lol";
+                return NaN;
             } else {
                 return a / b;
             }
