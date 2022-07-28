@@ -35,8 +35,10 @@ function operate(a, b, operator) {
 // DOM manipulation and user input functions
 numberButtons.forEach((number) => {
     number.addEventListener('click', function() {
-        storedNumber += number.innerText;
-        displayValue.innerText = storedNumber.substring(0, 11);
+        if (storedNumber.toString().length < 11) {
+            storedNumber += number.innerText;
+            displayValue.innerText = storedNumber;
+        }
     })
 }); 
 

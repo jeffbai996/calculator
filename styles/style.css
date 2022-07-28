@@ -50,11 +50,13 @@ button:hover {
 }
 
 .display-row #display {
+    display: flex;
     border: var(--border);
     border-radius: var(--border-radius);
-    text-align: right;
+    justify-content: right;
+    align-items: center;
     padding: 5px 10px;
-    font-size: 36pt;
+    font-size: 32pt;
     flex: 4;
 }
 
