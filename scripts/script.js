@@ -47,7 +47,7 @@ deleteButton.addEventListener('click', function() {
         storedNumber = storedNumber.slice(0, -1);
         displayValue.innerText = storedNumber;
     } else {
-        storedNumber = '';
+        storedNumber = 0;
         displayValue.innerText = "0";
     }
 });
@@ -55,14 +55,18 @@ deleteButton.addEventListener('click', function() {
 operatorButtons.forEach((operator) => {
     operator.addEventListener('click', function() {
         // handle stringing operations
-        if (currentNumber && storedNumber) {
+        if (currentNumber !== 0 && storedNumber !== 0) {
             displayResult();
         }
         // store the number/operator inputted
         currentNumber = storedNumber;
         clickedOperator = operator.innerText;
         // displays current number + selected operator
-        displayValue.textContent = `${currentNumber} ${clickedOperator}`;
+        if (currentNumber.toString().length > 11) {
+            displayValue.textContent = `${currentNumber.toExponential(fractionDigits = 5)} ${clickedOperator}`;
+        } else {
+            displayValue.textContent = `${currentNumber} ${clickedOperator}`;
+        }
         // clear stored number for next calculation
         storedNumber = '';
     })
@@ -80,12 +84,11 @@ function displayResult() {
             displayValue.textContent = result.toExponential(fractionDigits = 5);
         } else {
             displayValue.textContent = result;
-
         }
         // store the result
         storedNumber = result;
         // reset the current number
-        currentNumber = '';
+        currentNumber = 0;
     }
 };
 
