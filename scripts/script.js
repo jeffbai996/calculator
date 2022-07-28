@@ -35,7 +35,7 @@ function operate(a, b, operator) {
 // DOM manipulation and user input functions
 numberButtons.forEach((number) => {
     number.addEventListener('click', function() {
-        if (storedNumber.toString().length < 11) {
+        if (storedNumber.length < 11) {
             storedNumber += number.innerText;
             displayValue.innerText = storedNumber;
         }
@@ -76,7 +76,12 @@ function displayResult() {
     // check if there are two values to operate on
     if (currentNumber && storedNumber) {
         result = operate(Number(currentNumber), Number(storedNumber), clickedOperator);
-        displayValue.textContent = result;
+        if (result.toString().length > 11) { 
+            displayValue.textContent = result.toExponential(fractionDigits = 5);
+        } else {
+            displayValue.textContent = result;
+
+        }
         // store the result
         storedNumber = result;
         // reset the current number
