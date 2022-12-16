@@ -11,6 +11,7 @@ let currentNumber = '';
 let storedNumber = '';
 let clickedOperator = '';
 let result = '';
+let lastOperand = '';
 
 displayValue.innerText = 0;
 
@@ -69,6 +70,8 @@ operatorButtons.forEach((operator) => {
         }
         // clear stored number for next calculation
         storedNumber = '';
+        // reset last operand
+        lastOperand = '';
     })
 });
 
@@ -77,9 +80,11 @@ equalsButton.addEventListener('click', function() {
 });
 
 function displayResult() {
+    // if storedNumber is null, use last operand for repeated operation
+    let currentOperand = storedNumber ? storedNumber : lastOperand;
     // check if there are two values to operate on
-    if (currentNumber && storedNumber) {
-        result = operate(Number(currentNumber), Number(storedNumber), clickedOperator);
+    if (currentNumber && currentOperand) {
+        result = operate(Number(currentNumber), Number(currentOperand), clickedOperator);
         if (result.toString().length > 11) { 
             displayValue.textContent = result.toExponential(fractionDigits = 5);
         } else {
@@ -87,6 +92,8 @@ function displayResult() {
         }
         // store the result
         storedNumber = result;
+        // update lastOperand with current operand
+        lastOperand = currentOperand;
         // reset the current number
         currentNumber = 0;
     }
